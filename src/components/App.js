@@ -3,9 +3,6 @@ import { useState } from 'react';
 import quoteList from '../data/quotes.json';
 
 function App() {
-  // Para comprobar si quoteList nos trae correctamente los datos. BORRAR
-  console.log(quoteList);
-
   // Variables de estado
   const [data, setData] = useState(quoteList);
   const [newQuote, setNewQuote] = useState({
@@ -13,7 +10,7 @@ function App() {
     character: '',
   });
   const [searchQuote, setSearchQuote] = useState('');
-  const [searchCharacter, setSearchCharacter] = useState('');
+  const [searchCharacter, setSearchCharacter] = useState('todos');
 
   const handleNewQuote = (event) => {
     setNewQuote({
@@ -40,11 +37,19 @@ function App() {
   };
 
   const htmlData = data
-    .filter(
-      (quote) =>
-        quote.quote.toLowerCase().includes(searchQuote.toLowerCase()) ||
-        quote.character.toLowerCase().includes(searchCharacter.toLowerCase())
-    )
+    // Double search by quote and character
+    .filter((quote) => {
+      return quote.quote.toLowerCase().includes(searchQuote.toLowerCase());
+    })
+    .filter((quote) => {
+      if (searchCharacter === 'todos') {
+        return true;
+      }
+      return quote.character
+        .toLowerCase()
+        .includes(searchCharacter.toLowerCase());
+    })
+
     .map((quote, index) => {
       return (
         <li className='quote' key={index}>
