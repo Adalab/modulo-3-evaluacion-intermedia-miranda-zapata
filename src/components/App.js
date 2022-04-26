@@ -13,6 +13,7 @@ function App() {
     character: '',
   });
   const [searchQuote, setSearchQuote] = useState('');
+  const [searchCharacter, setSearchCharacter] = useState('');
 
   const handleNewQuote = (event) => {
     setNewQuote({
@@ -34,11 +35,15 @@ function App() {
     setSearchQuote(event.target.value);
   };
 
+  const handleSearchCharacter = (event) => {
+    setSearchCharacter(event.target.value);
+  };
+
   const htmlData = data
     .filter(
       (quote) =>
         quote.quote.toLowerCase().includes(searchQuote.toLowerCase()) ||
-        quote.character.toLowerCase().includes(searchQuote.toLowerCase())
+        quote.character.toLowerCase().includes(searchCharacter.toLowerCase())
     )
     .map((quote, index) => {
       return (
@@ -63,6 +68,20 @@ function App() {
             onChange={handleSearchQuote}
             value={searchQuote}
           />
+          <select
+            name='searchCharacter'
+            id='searchCharacter'
+            onChange={handleSearchCharacter}
+            value={searchCharacter}
+          >
+            <option value='todos'>Todos</option>
+            <option value='Rachel'>Rachel</option>
+            <option value='Monica'>Monica</option>
+            <option value='Phoebe'>Phoebe</option>
+            <option value='Joey'>Joey</option>
+            <option value='Chandler'>Chandler</option>
+            <option value='Ross'>Ross</option>
+          </select>
         </form>
       </header>
 
@@ -71,19 +90,19 @@ function App() {
       <main className='main'>
         <form>
           <input
-            className='addQuote__input'
+            className='quote__input'
             type='text'
-            name='addQuote'
-            id='addQuote'
+            name='quote'
+            id='quote'
             placeholder='Do you know any more quotes?'
             onChange={handleNewQuote}
             value={newQuote.quote}
           />
           <input
-            className='addCharacter__input'
+            className='character__input'
             type='text'
-            name='addCharacter'
-            id='addCharacter'
+            name='character'
+            id='character'
             placeholder='Who said it?'
             onChange={handleNewQuote}
             value={newQuote.character}
