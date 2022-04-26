@@ -1,6 +1,8 @@
 import '../styles/App.scss';
 import { useState } from 'react';
+// import { useState, useEffect } from 'react';
 import quoteList from '../data/quotes.json';
+// import callToApi from '../services/fetch';
 
 function App() {
   // Variables de estado
