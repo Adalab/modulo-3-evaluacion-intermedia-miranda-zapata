@@ -51,7 +51,6 @@ function App() {
         .toLowerCase()
         .includes(searchCharacter.toLowerCase());
     })
-
     .map((quote, index) => {
       return (
         <li className='quote' key={index}>
