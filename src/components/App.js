@@ -28,11 +28,15 @@ function App() {
 
   const handleClickAdd = (event) => {
     event.preventDefault();
-    setData([...data, newQuote]);
-    setNewQuote({
-      quote: '',
-      character: '',
-    });
+    if (newQuote.quote !== '' || newQuote.character !== '') {
+      setData([...data, newQuote]);
+      setNewQuote({
+        quote: '',
+        character: '',
+      });
+    } else {
+      alert('Por favor, indica una cita y un personaje'); // Mejorable con un texto de aviso, lo sé
+    }
   };
 
   const handleSearchQuote = (event) => {
