@@ -1,18 +1,23 @@
 import '../styles/App.scss';
-import { useState } from 'react';
-// import { useState, useEffect } from 'react';
-import quoteList from '../data/quotes.json';
-// import callToApi from '../services/fetch';
+import { useState, useEffect } from 'react';
+// import quoteList from '../data/quotes.json';
+import callToApi from '../services/fetch';
 
 function App() {
   // Variables de estado
-  const [data, setData] = useState(quoteList);
+  const [data, setData] = useState([]);
   const [newQuote, setNewQuote] = useState({
     quote: '',
     character: '',
   });
   const [searchQuote, setSearchQuote] = useState('');
   const [searchCharacter, setSearchCharacter] = useState('todos');
+
+  useEffect(() => {
+    callToApi().then((data) => {
+      setData(data);
+    });
+  }, []);
 
   const handleNewQuote = (event) => {
     setNewQuote({
