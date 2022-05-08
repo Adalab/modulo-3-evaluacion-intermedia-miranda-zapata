@@ -70,15 +70,17 @@ function App() {
       <header className='header'>
         <h1 className='header__title'>F·R·I·E·N·D·S' quotes</h1>
         <form>
+          <label htmlFor='searchQuote'>Search quote</label>
           <input
             className='searchQuote__input'
             autoComplete='off'
             type='search'
             name='searchQuote'
-            placeholder='Search quote'
+            placeholder='Did she get off the plane?'
             onChange={handleSearchQuote}
             value={searchQuote}
           />
+          <label htmlFor='searchCharacter'>Character</label>
           <select
             name='searchCharacter'
             id='searchCharacter'
@@ -100,21 +102,23 @@ function App() {
 
       <main className='main'>
         <form>
+          <label htmlFor='quote'>Do you know any more quotes?</label>
           <input
             className='quote__input'
             type='text'
             name='quote'
             id='quote'
-            placeholder='Do you know any more quotes?'
+            placeholder='Add quote'
             onChange={handleNewQuote}
             value={newQuote.quote}
           />
+          <label htmlFor='character'>Who said it?</label>
           <input
             className='character__input'
             type='text'
             name='character'
             id='character'
-            placeholder='Who said it?'
+            placeholder='Add character'
             onChange={handleNewQuote}
             value={newQuote.character}
           />
